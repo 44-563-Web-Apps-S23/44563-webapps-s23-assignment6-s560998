@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>First Assignment in java script</title>
+ </head>
+<body>
+<h1>Painter entry Manasa Akula</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="form1_hiddenpainter">The hidden painter name </label>
+    <input type="password" value="Monet" id="form1_hiddenpainter"><br>
+    <label for="form1_guesspainter">Guess the painter </label>
+    <input type="text" id="form1_guesspainter"> <br>
+    <input type="button" onclick="checkPainter()" value="Check the guess">
+</form>
+<p id="result">This text will be replaced </p>
+<script> 
+let good=0;
+let oops=0;
+function checkPainter(){
+     hiddenpainter = document.getElementById("form1_hiddenpainter").value
+     guesspainter = document.getElementById("form1_guesspainter").value
+     if(hiddenpainter==guesspainter)
+     {
+        good=good+1;
+        alert("You got it right");
+        document.getElementById("result").innerHTML=good;
+     }
+     else
+     {
+        oops=oops+1;
+        alert("Sorry");
+        document.getElementById("result").innerHTML=oops;
+     }
+}
+
+</script>
+</body>
+</html> 
