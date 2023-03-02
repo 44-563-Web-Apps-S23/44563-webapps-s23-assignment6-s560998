@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>About Candy in JS</title>
+ </head>
+<body>
+<h1> Manasa Akula chooses candy</h1>
+<h2>Getting input</h2>
+<br>
+<form>
+        <input type="checkbox" id="darkchocolate" name="Dark Chocolate" value="True">Dark Chocolate <br>
+        <input type="checkbox" id="nuts" name="nuts" value="True"> Nuts <br>
+        <input type="checkbox" id="chewy" name="chewy" value="False"> Chewy <br>
+        <input type="button" onclick="selectBox()" value="Select a box">
+        
+</form>
+<br>
+<form>
+    Enter the size<input type="text" id="size"  name="size" value="size"><br>
+    Enter price<input type="text" id="price" name="price"><br>
+    <input type="button" onclick="updateBox()" value="Update the box">
+</form>
+<p id="result">This text will be replaced </p>
+<script> 
+
+    let my_candy_box={};
+    function selectBox()
+        {
+            my_candy_box={};
+            
+            let darkchocolate=document.getElementById("darkchocolate").checked
+            let nuts=document.getElementById("nuts").checked
+            let chewy=document.getElementById("chewy").checked
+            
+            if(darkchocolate)
+            {
+                my_candy_box.darkchocolate = true;
+            }
+            else
+            {
+                my_candy_box.darkchocolate = false;
+            }
+            if(nuts)
+            {
+                my_candy_box.nuts = true;
+            }
+            else
+            {
+                my_candy_box.nuts = false;
+            }
+            if(chewy)
+            {
+                my_candy_box.chewy = true;
+            }
+            else
+            {
+                my_candy_box.chewy = false;
+            }
+            document.getElementById("result").innerHTML=JSON.stringify(my_candy_box)
+        } 
+    
+        function updateBox() 
+        {
+            
+        let sizeval = document.getElementById("size").value;
+        let priceval = document.getElementById("price").value;
+
+        my_candy_box["size"] = sizeval;
+        my_candy_box["price"] = priceval;
+
+        document.getElementById("result").innerHTML = JSON.stringify(my_candy_box)
+        }
+    </script>
+    
+    
+</body>
+</html> 
