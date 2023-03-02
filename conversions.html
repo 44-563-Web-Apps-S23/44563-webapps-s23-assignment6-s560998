@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Currency Conversions using HTML and JS</title>
+ </head>
+<body>
+<h1>Manasa Akula shows currency conversions</h1>
+<h2>Getting input</h2>
+
+    <label for="base">Enter base amount:</label>
+    <input type="number" id="base" value="50">
+    <label for="conversion">Enter the conversion rate:</label>
+    <input type="number" id="conversion" value="35">
+    <br><br>
+    <button onclick="convert()">Show conversions</button>
+    <br><br>
+  
+<p id="results"></p>
+<form>
+    <div class="form-group">
+    <input type="radio" name="action" id="mean" onclick="chooseOp()" name="average" value="mean">
+    <label for="mean">average</label>
+    <br>
+    <input type="radio" name="action" id="max" onclick="chooseOp()" name="max" value="maximum">
+    <label for="max">max</label>
+    <br>
+    <input type="radio" name="action" id="min" onclick="chooseOp()" name="min" value="minimum">
+    <label for="min">min</label>
+    <br> 
+    <br> 
+</form>
+<p id="result">This text will be replaced</p>
+
+<script> 
+function convert()
+{
+   const  baseValue = Number(document.getElementById("base").value);
+   const  conversionValue= Number(document.getElementById("conversion").value);
+   let toShow="";
+   for(let i=0; i<5; i++)
+   {
+     const value = baseValue * Math.pow(2,i);
+     const convertedValue = value * conversionValue;
+     toShow += value + " is " +  convertedValue.toFixed(1) + "; ";
+   }
+   document.getElementById("results").textContent = "Conversions are: " + toShow;
+}
+ function chooseOp() 
+ {
+    var baseval = document.getElementById("base").value;
+    var conversionval = document.getElementById("conversion").value;
+    var option = document.querySelector('input[name="action"]:checked').value;
+    if (option == "minimum") 
+    {
+        document.getElementById("result").innerHTML = "min of " + baseval + " and " + conversionval + 
+        " is " + Math.min(baseval, conversionval);
+    } 
+    else if (option == "maximum") 
+    {
+       document.getElementById("result").innerHTML = "max of " + baseval + " and " + conversionval + 
+       " is " + Math.max(baseval, conversionval);
+    } 
+    else if (option == "mean") 
+    {
+      document.getElementById("result").innerHTML = "mean of " + baseval + " and " + conversionval + 
+      " is " + (parseInt(baseval) + parseInt(conversionval)) / 2;
+    }
+}
+
+</script>
+
+</body>
+</html> 
